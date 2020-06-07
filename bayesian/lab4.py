@@ -72,7 +72,7 @@ sigma2 ~ scaled_inv_chi_square(1,2);
 }
 """
 sm = pystan.StanModel(model_code=armodel2)
-data = {'T':T,'c':campy.c}
+data = {'T':len(campy.c),'c':campy.c}
 fit = sm.sampling(data=data, iter=2000, chains=4, warmup=1000)
 fit.plot()
 paraneters = fit.extract()
